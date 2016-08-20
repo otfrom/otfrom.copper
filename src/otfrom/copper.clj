@@ -17,7 +17,7 @@
                           (.write w x)
                           (recur))))))]
     (with-open [rdr (io/reader in-file)]
-      (doseq [line (->> rdr line-seq vec)]
+      (doseq [line (line-seq rdr)]
         (>!! in line))
       (async/close! in))
     (async/close! fw)))
